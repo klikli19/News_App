@@ -1,0 +1,3 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/202308142100_news_line_table.sql
