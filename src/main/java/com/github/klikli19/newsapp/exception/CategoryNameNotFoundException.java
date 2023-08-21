@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 @RequiredArgsConstructor
-public class NewsNotFoundException extends RuntimeException{
-    private final long id;
+public class CategoryNameNotFoundException extends RuntimeException{
+    private final String text;
     @Override
     public String getMessage() {
-        return "Новость с id = " + id + " не найдена!";
+        return "Категория  " + text + " не найдена!";
     }
+}
 }
