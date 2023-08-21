@@ -20,7 +20,7 @@ public class Feed {
     private String title;
     private String content;
     private LocalDateTime createdFeed;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
 

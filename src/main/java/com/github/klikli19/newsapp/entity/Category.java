@@ -18,6 +18,4 @@ public class Category {
     private Long id;
     private String name;
 
-    @OneToMany
-    Collection<Feed> feeds;
 }
