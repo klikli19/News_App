@@ -13,4 +13,4 @@ public class CategoryNameNotFoundException extends RuntimeException{
         return "Категория  " + text + " не найдена!";
     }
 }
-}
+
