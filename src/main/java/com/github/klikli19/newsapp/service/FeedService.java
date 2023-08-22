@@ -3,7 +3,6 @@ package com.github.klikli19.newsapp.service;
 import com.github.klikli19.newsapp.dto.FeedDTO;
 import com.github.klikli19.newsapp.dto.UpdateFeedDTO;
 import com.github.klikli19.newsapp.entity.Feed;
-import com.github.klikli19.newsapp.exception.CategoryNameNotFoundException;
 import com.github.klikli19.newsapp.exception.FeedNotFoundException;
 import com.github.klikli19.newsapp.mapper.FeedMapper;
 import com.github.klikli19.newsapp.repository.FeedRepository;
@@ -12,8 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -43,9 +42,15 @@ public class FeedService {
             return repository.findAll(request).getContent();
     }
 
-    public List<Feed> getFeedByCategory(String category) {
-        return Collections.singletonList(repository.findByCategoryContainsIgnoreCase(category).orElseThrow(() ->
-                new CategoryNameNotFoundException(category)));
+    public Optional<Feed> getFeedByCategory(String category) {
+        return repository.findFeedByCategory_NameContainsIgnoreCase(category);
     }
 
+    public Optional<Feed> getFeedByCTitle(String title) {
+        return repository.findFeedByTitleContainsIgnoreCase(title);
+    }
+
+    public Optional<Feed> getFeedByContent(String content) {
+        return repository.findFeedByContentContainsIgnoreCase(content);
+    }
 }

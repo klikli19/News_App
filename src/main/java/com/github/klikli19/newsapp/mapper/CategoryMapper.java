@@ -7,8 +7,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CategoryMapper {
 
-    CategoryDTO toEntity(Category category);
-    Category toDto(CategoryDTO dto);
+    CategoryDTO toDto(Category category);
+    Category toEntity(CategoryDTO dto);
 
     @Mapping(source = "name", target = "name", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void patch(@MappingTarget Category target, CategoryDTO source);
